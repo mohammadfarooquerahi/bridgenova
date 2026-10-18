@@ -1,0 +1,12 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Intermediate build archives (keep bridgenova.zip as main distribution)
+bridgenova-v*.zip
+
+# Temporary files & logs
+*.log
+.vscode/
+.idea/

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BridgeNova — Client Website Management & Editing Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+    :root {
+      --navy: #0a1c33;
+      --navy-light: #16304c;
+      --navy-card: #132a4d;
+      --gold: #caa256;
+      --gold-light: #f5eedf;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    .no-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      min-height: 980px;
+      background: linear-gradient(135deg, #071526 0%, #0a1c33 60%, #16304c 100%);
+      color: #ffffff;
+      padding: 60px 48px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .cover-page::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(202, 162, 86, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(202, 162, 86, 0.15);
+      border: 1px solid rgba(202, 162, 86, 0.4);
+      color: var(--gold);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42px;
+      line-height: 1.15;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 24px 0 16px;
+    }
+
+    .cover-title span {
+      color: var(--gold);
+    }
+
+    .cover-subtitle {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #cbd5e1;
+      max-width: 620px;
+      font-weight: 400;
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: rgba(10, 28, 51, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 24px;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+
+    .cover-meta-item small {
+      display: block;
+      color: var(--gold);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .cover-meta-item strong {
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    .cover-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* Content Styling */
+    .content-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-logo {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .header-logo span {
+      color: var(--gold);
+    }
+
+    .header-doc-title {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 26px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: var(--gold);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 13px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin: 18px 0 8px;
+      color: var(--navy-light);
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: #334155;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      font-size: 13px;
+      border-left: 4px solid;
+    }
+
+    .callout-info {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1e40af;
+    }
+
+    .callout-tip {
+      background: #f0fdf4;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .callout-gold {
+      background: #fdfaf3;
+      border-color: var(--gold);
+      color: #78350f;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--navy);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-title .badge {
+      background: var(--navy);
+      color: var(--gold);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
+    .card p {
+      font-size: 12.5px;
+      margin-bottom: 0;
+      color: #475569;
+    }
+
+    /* Step Workflow */
+    .steps-container {
+      margin: 16px 0;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .step-number {
+      background: var(--navy);
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 13px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-body h4 {
+      font-size: 13.5px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .step-body p {
+      font-size: 12.5px;
+      margin-bottom: 0;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 12.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: var(--navy);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .kbd {
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       COVER PAGE
+       ============================================================ -->
+  <div class="cover-page">
+    <div>
+      <div class="cover-badge">Official Client Manual &bull; Theme v1.0.5</div>
+      <h1 class="cover-title">BridgeNova<br><span>Website Management</span><br>&amp; Editing Guide</h1>
+      <p class="cover-subtitle">A comprehensive, step-by-step non-technical walkthrough for website owners and content managers to edit every section, page, banner, and FAQ without writing code.</p>
+    </div>
+
+    <div>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <small>Platform</small>
+          <strong>WordPress (Block + Customizer)</strong>
+        </div>
+        <div class="cover-meta-item">
+          <small>Theme Release</small>
+          <strong>BridgeNova 1.0.5</strong>
+        </div>
+        <div class="cover-meta-item">
+          <small>Live Preview</small>
+          <strong>Appearance &gt; Theme Options</strong>
+        </div>
+      </div>
+
+      <div class="cover-footer">
+        <span>&copy; 2026 Bridge Global Network. All rights reserved.</span>
+        <span>BridgeNova Administrative Handover Documentation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================
+       PAGE 1: OVERVIEW & ACCESS
+       ============================================================ -->
+  <div class="content-header">
+    <div class="header-logo">Bridge<span>Nova</span></div>
+    <div class="header-doc-title">Section 1: Access &amp; Architecture</div>
+  </div>
+
+  <h2><span class="num">1</span> Introduction &amp; Core Architecture</h2>
+  <p>Your BridgeNova website has been engineered specifically for <strong>effortless client management</strong>. You do not need any coding or web development experience to keep your site updated, replace photos, add events, change FAQ questions, or publish new announcements.</p>
+
+  <div class="callout callout-gold">
+    <strong>Dual-Layer Content Management System</strong>
+    Your website provides two intuitive management methods tailored to different types of content:
+    <br>&bull; <strong>Theme Customizer ("Theme Options"):</strong> Real-time visual editor for the Homepage, Hero banner, Impact counters, FAQ accordion, Contact info, and Footer.
+    <br>&bull; <strong>WordPress Page Editor (`the_content()`):</strong> Standard visual block editor for custom page content (About Us, Services, Contact, Team, Partners, Speakers, Events).
+  </div>
+
+  <h3>How to Access the WordPress Admin Dashboard</h3>
+  <div class="steps-container">
+    <div class="step-item">
+      <div class="step-number">1</div>
+      <div class="step-body">
+        <h4>Navigate to Admin URL</h4>
+        <p>Open your browser and navigate to <code>https://yourdomain.com/wp-admin</code> (or <code>/wp-login.php</code>).</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">2</div>
+      <div class="step-body">
+        <h4>Sign In with Client Credentials</h4>
+        <p>Enter your Administrator username and password. You will arrive at the main WordPress Dashboard.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">3</div>
+      <div class="step-body">
+        <h4>Access Direct Edit Links</h4>
+        <p>In the left sidebar, look for <strong>Appearance &gt; Theme Options (Edit All Sections)</strong>. Alternatively, when viewing your live website while logged in, simply click <strong>Customize</strong> in the top black admin bar.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">2</span> Quick Reference: What to Edit Where</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 32%;">Website Section</th>
+        <th style="width: 38%;">Where to Edit</th>
+        <th style="width: 30%;">Editor Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hero Title, Eyebrow &amp; Banner Photo</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; Hero Section</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Impact Statistics (500+ Members, etc.)</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; Stats &amp; Impact Counters</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>About Section on Homepage</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; About Section</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Six Strategic Pillars (01 to 06)</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; Six Strategic Pillars</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Frequently Asked Questions (FAQ)</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; FAQ (Frequently Asked Questions)</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Central Phone, Email &amp; Social Links</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; Contact &amp; Social Info</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Footer Brand Summary &amp; Copyright</strong></td>
+        <td><code>Appearance &gt; Theme Options &gt; Footer &amp; Copyright</code></td>
+        <td>Visual Customizer</td>
+      </tr>
+      <tr>
+        <td><strong>Individual Pages (About, Services, Team...)</strong></td>
+        <td><code>Pages &gt; All Pages &gt; [Select Page] &gt; Edit</code></td>
+        <td>WordPress Block Editor</td>
+      </tr>
+      <tr>
+        <td><strong>Upcoming Events &amp; Workshops</strong></td>
+        <td><code>Events &gt; Add New / All Events</code></td>
+        <td>Custom Post Type</td>
+      </tr>
+      <tr>
+        <td><strong>Leadership Team Bios &amp; Photos</strong></td>
+        <td><code>Team Members &gt; Add New</code></td>
+        <td>Custom Post Type</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>BridgeNova Client Guide &bull; Release 1.0.5</span>
+    <span>Page 1 of 5</span>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================
+       PAGE 2: THEME CUSTOMIZER WALKTHROUGH
+       ============================================================ -->
+  <div class="content-header">
+    <div class="header-logo">Bridge<span>Nova</span></div>
+    <div class="header-doc-title">Section 2: Visual Theme Options</div>
+  </div>
+
+  <h2><span class="num">3</span> Editing via Visual Theme Options</h2>
+  <p>The <strong>BridgeNova Theme Options</strong> panel is built into the native WordPress Customizer. As you type changes or upload new photos, a live preview on the right shows exactly how the website will look before you publish.</p>
+
+  <div class="callout callout-info">
+    <strong>How to Open the Visual Customizer:</strong>
+    Go to <strong>Appearance &gt; Theme Options (Edit All Sections)</strong>, or open your homepage and click <strong>Customize</strong> at the top of your screen.
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="badge">01</span> Hero Section</div>
+      <p><strong>Eyebrow Text:</strong> The gold uppercase subtitle (e.g. <em>Global Connections</em>).<br>
+      <strong>Hero Title:</strong> Main heading (e.g. <em>Building Bridges Across Borders</em>).<br>
+      <strong>Description:</strong> Intro paragraph explaining BRIDGE's mission.<br>
+      <strong>Hero Background Image:</strong> Click "Select Image" or "Upload" to change the high-resolution hero background photo.<br>
+      <strong>Action Buttons 1, 2, 3:</strong> Configure button text and link URLs (e.g. <em>Join BRIDGE</em>, <em>Event Registration</em>, <em>Contact Us</em>).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge">02</span> Stats &amp; Impact Counters</div>
+      <p>Configure the 4 large animated gold numbers displayed below the hero:<br>
+      &bull; <strong>Metric 1:</strong> Number (e.g. <code>59</code> or <code>500+</code>) and Label (<em>Members</em>).<br>
+      &bull; <strong>Metric 2:</strong> Number (e.g. <code>11</code> or <code>30+</code>) and Label (<em>Countries</em>).<br>
+      &bull; <strong>Metric 3:</strong> Number (e.g. <code>10</code> or <code>50+</code>) and Label (<em>Programs</em>).<br>
+      &bull; <strong>Metric 4:</strong> Number (e.g. <code>20</code> or <code>100+</code>) and Label (<em>Partners</em>).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge">03</span> About BRIDGE Section</div>
+      <p>Controls the introductory showcase on the homepage:<br>
+      &bull; <strong>Section Eyebrow:</strong> (e.g. <em>About BRIDGE</em>)<br>
+      &bull; <strong>Section Main Title:</strong> (e.g. <em>Building Bridges for a Better Future</em>)<br>
+      &bull; <strong>Paragraph 1:</strong> Primary mission and organizational statement.<br>
+      &bull; <strong>Paragraph 2:</strong> Secondary impact and reach statement.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge">04</span> Six Strategic Pillars</div>
+      <p>Allows updating titles and detailed descriptions for all six framework cards:<br>
+      &bull; <strong>Pillar 01:</strong> Leadership Development<br>
+      &bull; <strong>Pillar 02:</strong> International Exchange<br>
+      &bull; <strong>Pillar 03:</strong> Global Dialogue &amp; Diplomacy<br>
+      &bull; <strong>Pillar 04:</strong> Innovation &amp; Entrepreneurship<br>
+      &bull; <strong>Pillar 05:</strong> Global Careers<br>
+      &bull; <strong>Pillar 06:</strong> Community Development &amp; Impact</p>
+    </div>
+  </div>
+
+  <h3>Publishing Your Customizer Edits</h3>
+  <div class="callout callout-tip">
+    <strong>Instant Live Updating:</strong> When you are satisfied with your edits in the preview, click the blue <strong>"Publish"</strong> button at the top of the customizer sidebar. Your changes immediately go live to all visitors.
+  </div>
+
+  <div class="page-footer">
+    <span>BridgeNova Client Guide &bull; Release 1.0.5</span>
+    <span>Page 2 of 5</span>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================
+       PAGE 3: FAQ & CONTACT MANAGEMENT
+       ============================================================ -->
+  <div class="content-header">
+    <div class="header-logo">Bridge<span>Nova</span></div>
+    <div class="header-doc-title">Section 3: FAQ, Social &amp; Contact Info</div>
+  </div>
+
+  <h2><span class="num">4</span> Frequently Asked Questions (FAQ) Accordion</h2>
+  <p>The FAQ section is fully dynamic. The accordion automatically features smooth animated expand/collapse functionality with gold rotation indicators. You can manage questions 1 through 8 directly from the Customizer.</p>
+
+  <div class="steps-container">
+    <div class="step-item">
+      <div class="step-number">1</div>
+      <div class="step-body">
+        <h4>Open FAQ Panel</h4>
+        <p>Go to <strong>Appearance &gt; Theme Options &gt; Frequently Asked Questions (FAQ)</strong>.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">2</div>
+      <div class="step-body">
+        <h4>Edit Questions and Answers</h4>
+        <p>Each FAQ has a dedicated <strong>Question</strong> text field and <strong>Answer</strong> text box. You can modify any existing answer or rewrite questions at any time.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">3</div>
+      <div class="step-body">
+        <h4>Hiding or Deleting an FAQ</h4>
+        <p>If you have fewer than 8 FAQs, simply <strong>leave the Question field blank</strong>. The website will automatically hide that FAQ accordion item so no empty space appears.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">5</span> Contact Details, Social Media &amp; Footer</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Contact &amp; Location Information</div>
+      <p>Controls contact information shown across the Header, Contact Page, and Footer:<br>
+      &bull; <strong>Email Address:</strong> Central inquiry email (e.g. <code>info@bridgeglobalnetwork.org</code>).<br>
+      &bull; <strong>Phone Number:</strong> Official phone / WhatsApp line.<br>
+      &bull; <strong>Office Location:</strong> Physical city/country (e.g. <em>Islamabad, Pakistan</em>).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Social Media Channels</div>
+      <p>Enter the direct URLs to your organization's social profiles. Leaving any URL blank will hide that icon automatically:<br>
+      &bull; <strong>Facebook:</strong> <code>https://facebook.com/yourpage</code><br>
+      &bull; <strong>Instagram:</strong> <code>https://instagram.com/yourhandle</code><br>
+      &bull; <strong>LinkedIn:</strong> <code>https://linkedin.com/company/...</code><br>
+      &bull; <strong>YouTube &amp; X (Twitter):</strong> Full channel URLs.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 14px;">
+    <div class="card-title">Footer Brand Overview &amp; Copyright Notice</div>
+    <p>Located under <strong>Appearance &gt; Theme Options &gt; Footer &amp; Copyright</strong>:<br>
+    &bull; <strong>Footer Bio / Description:</strong> A short paragraph describing BRIDGE at the bottom left of the footer.<br>
+    &bull; <strong>Copyright Line:</strong> The copyright statement (e.g. <em>&copy; 2026 Bridge Global Network. All rights reserved.</em>). The theme automatically keeps the current year up to date.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>BridgeNova Client Guide &bull; Release 1.0.5</span>
+    <span>Page 3 of 5</span>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================
+       PAGE 4: EDITING INDIVIDUAL PAGES
+       ============================================================ -->
+  <div class="content-header">
+    <div class="header-logo">Bridge<span>Nova</span></div>
+    <div class="header-doc-title">Section 4: Editing Individual Pages</div>
+  </div>
+
+  <h2><span class="num">6</span> Editing Pages via WordPress Page Editor</h2>
+  <p>All page templates have been built with full native support for WordPress's page content loop (<code>the_content()</code>). You can easily add text, images, video embeds, download buttons, or custom notices to any page.</p>
+
+  <h3>Step-by-Step: Updating a Page</h3>
+  <div class="steps-container">
+    <div class="step-item">
+      <div class="step-number">1</div>
+      <div class="step-body">
+        <h4>Locate the Page in WordPress Admin</h4>
+        <p>From your WordPress dashboard, navigate to <strong>Pages &gt; All Pages</strong>. Hover over the page you want to update (e.g. <strong>About Us</strong>, <strong>Services</strong>, <strong>Our Team</strong>, or <strong>Contact Us</strong>) and click <strong>Edit</strong>.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">2</div>
+      <div class="step-body">
+        <h4>Add or Edit Content</h4>
+        <p>Use the standard WordPress Block Editor (Gutenberg) to type paragraphs, insert bulleted lists, add image blocks, embed YouTube videos, or paste notices.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">3</div>
+      <div class="step-body">
+        <h4>Update and Save</h4>
+        <p>Click the blue <strong>"Update"</strong> button in the top right corner. Your added content will seamlessly display on that page styled to match the dark navy and gold theme aesthetic.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">7</span> Managing Dynamic Content: Events &amp; Team</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Managing Upcoming Events</div>
+      <p>Go to <strong>Events &gt; Add New</strong> in the left sidebar:<br>
+      &bull; <strong>Title:</strong> Event Name (e.g. <em>BRIDGE Youth Leadership Summit 2026</em>).<br>
+      &bull; <strong>Featured Image:</strong> Upload a high-quality landscape image (16:9 aspect ratio recommended).<br>
+      &bull; <strong>Excerpt / Meta:</strong> Add the event date, time, and location (e.g. <em>October 24, 2026 &bull; Islamabad</em>).<br>
+      Published events automatically appear in the 3-column event grid on the homepage and on the <code>/events-bridge/</code> page.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Managing Team Members</div>
+      <p>Go to <strong>Team Members &gt; Add New</strong>:<br>
+      &bull; <strong>Title:</strong> Member's full name.<br>
+      &bull; <strong>Featured Image:</strong> Headshot photo (portrait aspect ratio recommended).<br>
+      &bull; <strong>Content Body:</strong> Member biography and qualifications.<br>
+      &bull; <strong>Excerpt / Custom Fields:</strong> Position or title (e.g. <em>Executive Director</em>) and LinkedIn profile URL.</p>
+    </div>
+  </div>
+
+  <h2><span class="num">8</span> Navigation &amp; Dropdown Menu Controls</h2>
+  <p>The primary menu features a <strong>single dropdown indicator</strong> (<code>&#9660;</code>) with smooth 180&deg; hover rotation on desktop and responsive touch accordion support on mobile devices.</p>
+  <div class="callout callout-info">
+    <strong>To Rearrange or Add Menu Items:</strong>
+    Go to <strong>Appearance &gt; Menus</strong>. Select the <strong>Primary Menu</strong>. Drag items up, down, or indent them to the right to create dropdown submenus. Click <strong>Save Menu</strong>.
+  </div>
+
+  <div class="page-footer">
+    <span>BridgeNova Client Guide &bull; Release 1.0.5</span>
+    <span>Page 4 of 5</span>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================
+       PAGE 5: BEST PRACTICES & TROUBLESHOOTING
+       ============================================================ -->
+  <div class="content-header">
+    <div class="header-logo">Bridge<span>Nova</span></div>
+    <div class="header-doc-title">Section 5: Best Practices &amp; Support</div>
+  </div>
+
+  <h2><span class="num">9</span> Image Dimensions &amp; Media Best Practices</h2>
+  <p>To keep the website loading lightning-fast across all devices while maintaining razor-sharp visuals on high-resolution displays, adhere to these recommended image specifications:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Recommended Dimensions</th>
+        <th>Format</th>
+        <th>Max File Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hero Background Banner</strong></td>
+        <td>1920 &times; 1080 px (Landscape)</td>
+        <td>WebP or JPG</td>
+        <td>&lt; 350 KB</td>
+      </tr>
+      <tr>
+        <td><strong>Event Cards</strong></td>
+        <td>800 &times; 500 px (16:10)</td>
+        <td>WebP or JPG</td>
+        <td>&lt; 150 KB</td>
+      </tr>
+      <tr>
+        <td><strong>Team Member Photos</strong></td>
+        <td>600 &times; 750 px (4:5 Portrait)</td>
+        <td>WebP or JPG</td>
+        <td>&lt; 120 KB</td>
+      </tr>
+      <tr>
+        <td><strong>Gallery Showcase</strong></td>
+        <td>1200 &times; 800 px (Landscape/Portrait)</td>
+        <td>WebP or JPG</td>
+        <td>&lt; 250 KB</td>
+      </tr>
+      <tr>
+        <td><strong>Partner Logos</strong></td>
+        <td>400 &times; 200 px (Transparent)</td>
+        <td>PNG or SVG</td>
+        <td>&lt; 60 KB</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">10</span> Client Troubleshooting &amp; FAQ</h2>
+
+  <div class="steps-container">
+    <div class="step-item">
+      <div class="step-number">?</div>
+      <div class="step-body">
+        <h4>I edited a section in the Customizer, but don't see it on my phone?</h4>
+        <p>Ensure you clicked the blue <strong>"Publish"</strong> button in the Customizer. Then, perform a hard refresh on your mobile browser by clearing cache or opening in a private/incognito window.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">?</div>
+      <div class="step-body">
+        <h4>How do I hide an FAQ that is no longer relevant?</h4>
+        <p>Go to <strong>Appearance &gt; Theme Options &gt; Frequently Asked Questions</strong> and delete the text inside the <em>Question</em> field for that item. The website will automatically hide that accordion row.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-number">?</div>
+      <div class="step-body">
+        <h4>Where do Contact Us and Event Registration submissions go?</h4>
+        <p>Form submissions are delivered immediately to the administrator email address configured in <strong>Settings &gt; General</strong> and in the Theme Options <strong>Contact Email</strong> field.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-gold" style="margin-top: 24px;">
+    <strong>Website Handover Complete</strong>
+    Theme Version <strong>1.0.5</strong> has passed all PHP 8.2 code syntax checks and is actively running on your server. All files, customizer options, and dynamic templates are fully unlocked for client management.
+  </div>
+
+  <div class="page-footer">
+    <span>BridgeNova Client Guide &bull; Release 1.0.5</span>
+    <span>Page 5 of 5</span>
+  </div>
+
+</body>
+</html>

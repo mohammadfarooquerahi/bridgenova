@@ -1,0 +1,395 @@
+﻿.elementor-theme-builder-content-area{height:400px;}.elementor-location-header:before, .elementor-location-footer:before{content:"";display:table;clear:both;}/* Start custom CSS for html, class: .elementor-element-ffb2b3e *//* Custom Structural Architecture Variables */
+:root {
+  --b-teal-glass: rgba(10, 28, 51, 0.94); /* Changed from rgba(13, 35, 34, 0.94) */
+  --b-teal-solid: #0a1c33; /* Changed from #0d2322 */
+  --b-gold: #caa256; 
+  --white: #ffffff;
+  --black: #000000;
+  --f-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Isolation Frame Overrides to bypass Page Builder Distortions */
+.bridge-custom-header,
+.bridge-custom-header * {
+  box-sizing: border-box !important;
+}
+
+.bridge-custom-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 999999 !important;
+  background-color: var(--b-teal-glass) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  font-family: var(--f-stack) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Master Layout Flex Alignments */
+.bridge-custom-header .header-container {
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  padding: 12px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 80px !important;
+}
+
+/* Image Branding Layout Dimensions */
+.bridge-custom-header .brand-logo-link {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+.bridge-custom-header .header-logo-image {
+  max-height: 52px !important;
+  height: 52px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* Desktop Primary Layout Configurations */
+.bridge-custom-header .nav-menu-list {
+  display: flex !important;
+  flex-direction: row !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 30px !important;
+  align-items: center !important;
+}
+
+.bridge-custom-header .nav-item {
+  position: relative !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bridge-custom-header .nav-link, 
+.bridge-custom-header .nav-dropdown-trigger {
+  color: var(--white) !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  background: none !important;
+  border: none !important;
+  padding: 10px 0 !important;
+  cursor: pointer !important;
+  font-family: var(--f-stack) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: color 0.2s ease !important;
+  line-height: 1 !important;
+}
+
+.bridge-custom-header .nav-item.active .nav-link,
+.bridge-custom-header .nav-item.active .nav-dropdown-trigger,
+.bridge-custom-header .nav-link:hover, 
+.bridge-custom-header .nav-dropdown-trigger:hover {
+  color: var(--b-gold) !important;
+}
+
+.bridge-custom-header .dropdown-arrow {
+  font-size: 8px !important;
+  opacity: 0.7 !important;
+  transition: transform 0.2s ease !important;
+  display: inline-block !important;
+}
+
+/* Desktop Absolute Submenu Dropdowns */
+.bridge-custom-header .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(15px) !important;
+  background-color: #132a4d !important; /* Changed from #0a1b1a */
+  border-top: 2px solid var(--b-gold) !important;
+  list-style: none !important;
+  padding: 6px 0 !important;
+  margin: 10px 0 0 0 !important;
+  min-width: 190px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 0 0 4px 4px !important;
+}
+
+@media (min-width: 1025px) {
+  .bridge-custom-header .nav-item:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+}
+
+.bridge-custom-header .dropdown-menu li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bridge-custom-header .dropdown-menu a {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  padding: 12px 20px !important;
+  display: block !important;
+  font-size: 13px !important;
+  text-align: left !important;
+  transition: all 0.2s ease !important;
+  width: 100% !important;
+}
+
+.bridge-custom-header .dropdown-menu a:hover {
+  background-color: rgba(202, 162, 86, 0.12) !important;
+  color: var(--b-gold) !important;
+}
+
+/* Premium Pill Shape Button Frameworks */
+.bridge-custom-header .header-action-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+.bridge-custom-header .cta-button {
+  color: var(--b-gold) !important;
+  border: 1px solid var(--b-gold) !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  border-radius: 50px !important;
+  transition: all 0.25s ease !important;
+  display: inline-block !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1 !important;
+}
+
+.bridge-custom-header .cta-button:hover {
+  background-color: var(--b-gold) !important;
+  color: var(--b-teal-solid) !important;
+}
+
+/* Base Hidden Display Adjustments */
+.bridge-custom-header .mobile-menu-header,
+.bridge-custom-header .mobile-hamburger-trigger,
+.bridge-custom-header .mobile-menu-footer {
+  display: none !important;
+}
+
+/* Tablet & Mobile Structural Mutations Grid Rules */
+@media (max-width: 1024px) {
+  .bridge-custom-header .mobile-hamburger-trigger {
+    display: flex !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    padding: 6px !important;
+  }
+
+  .bridge-custom-header .mobile-hamburger-trigger span {
+    display: block !important;
+    width: 22px !important;
+    height: 2px !important;
+    background-color: var(--white) !important;
+  }
+
+  .bridge-custom-header .header-logo-image {
+    max-height: 44px !important;
+    height: 44px !important;
+  }
+
+  /* Transforms Standard Row to off-canvas responsive menu bar layout */
+  .bridge-custom-header .main-navigation {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 80% !important;
+    max-width: 380px !important;
+    height: 100vh !important;
+    background-color: var(--b-teal-solid) !important;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6) !important;
+    z-index: 1000000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 24px !important;
+    overflow-y: auto !important;
+  }
+
+  /* Inner Drawer Header Row */
+  .bridge-custom-header .mobile-menu-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin-bottom: 35px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding-bottom: 20px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Close Option Styling Elements matching layout perfectly */
+  .bridge-custom-header .mobile-close-btn {
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    border: none !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    letter-spacing: 0.5px !important;
+    padding: 9px 18px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-family: var(--f-stack) !important;
+  }
+
+  /* Mobile Flex Formats Stacking Rules */
+  .bridge-custom-header .nav-menu-list {
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
+    align-items: flex-start !important;
+  }
+
+  .bridge-custom-header .nav-item {
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  }
+
+  .bridge-custom-header .nav-link, 
+  .bridge-custom-header .nav-dropdown-trigger {
+    padding: 16px 0 !important;
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: space-between !important;
+    font-size: 14px !important;
+  }
+
+  /* Vertical Dropdown Collapse Settings inside Mobile Overlay Backdrops */
+  .bridge-custom-header .dropdown-menu {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    margin: 0 !important;
+    padding: 0 0 8px 16px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    display: block !important; 
+    border-radius: 0 !important;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Activation hook mapped directly to active script elements functions */
+  .bridge-custom-header .nav-item.dropdown-open .dropdown-menu {
+    max-height: 250px !important; 
+  }
+
+  .bridge-custom-header .nav-item.dropdown-open .dropdown-arrow {
+    transform: rotate(180deg) !important;
+    color: var(--b-gold) !important;
+  }
+
+  /* Off-Canvas Drawer Footer â Follow Us + Legal block, pinned to bottom */
+  .bridge-custom-header .mobile-menu-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    margin-top: auto !important;
+    padding-top: 28px !important;
+    border-top: 1px solid rgba(202, 162, 86, 0.25) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .bridge-custom-header .mobile-menu-footer-label {
+    color: var(--b-gold) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    font-family: var(--f-stack) !important;
+  }
+
+  .bridge-custom-header .mobile-menu-social-row {
+    display: flex !important;
+    gap: 12px !important;
+  }
+
+  .bridge-custom-header .mobile-menu-social-icon {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--b-gold) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--b-gold) !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+  }
+
+  .bridge-custom-header .mobile-menu-social-icon svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .bridge-custom-header .mobile-menu-social-icon:hover {
+    background-color: var(--b-gold) !important;
+    color: var(--b-teal-solid) !important;
+  }
+
+  .bridge-custom-header .mobile-menu-legal {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    text-align: center !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-size: 11px !important;
+    font-family: var(--f-stack) !important;
+  }
+
+  .bridge-custom-header .mobile-menu-legal-links a {
+    color: rgba(255, 255, 255, 0.45) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .bridge-custom-header .mobile-menu-legal-links a:hover {
+    color: var(--b-gold) !important;
+  }
+
+  /* Off-canvas slider trigger visibility rules assignment hook */
+  .bridge-custom-header.nav-open .main-navigation {
+    right: 0 !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .bridge-custom-header .header-cta-wrapper {
+    display: none !important; 
+  }
+  .bridge-custom-header .main-navigation {
+    width: 90% !important;
+  }
+}
+
+ /* Close/* End custom CSS */
