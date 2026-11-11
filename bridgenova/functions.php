@@ -6,7 +6,7 @@
  */
 
 if ( ! defined( 'BRIDGENOVA_VERSION' ) ) {
-	define( 'BRIDGENOVA_VERSION', '1.0.8' );
+	define( 'BRIDGENOVA_VERSION', '1.0.9' );
 }
 
 /**
@@ -330,7 +330,7 @@ add_action( 'wp_enqueue_scripts', 'bridgenova_localize_scripts' );
  */
 function bridgenova_auto_setup_pages() {
 	$setup_ver = get_option( 'bridgenova_setup_version' );
-	if ( $setup_ver === '1.0.8' && ! isset( $_GET['bridgenova_setup'] ) ) {
+	if ( $setup_ver === '1.0.9' && ! isset( $_GET['bridgenova_setup'] ) ) {
 		return;
 	}
 
@@ -603,7 +603,7 @@ function bridgenova_auto_setup_pages() {
 
 	update_option( 'permalink_structure', '/%postname%/' );
 	flush_rewrite_rules( true );
-	update_option( 'bridgenova_setup_version', '1.0.8' );
+	update_option( 'bridgenova_setup_version', '1.0.9' );
 }
 add_action( 'init', 'bridgenova_auto_setup_pages' );
 add_action( 'after_switch_theme', 'bridgenova_auto_setup_pages' );
