@@ -90,7 +90,7 @@ $footer_desc      = get_theme_mod( 'bridgenova_footer_description', 'Building Re
 				<!-- BIC MUET Incubation Badge -->
 				<?php 
 				$bic_logo = get_theme_mod( 'bridgenova_footer_bic_logo', get_template_directory_uri() . '/assets/images/BIC-MUET-logo.png' );
-				$bic_text = get_theme_mod( 'bridgenova_footer_bic_text', 'Incubated at BIC Mehran University Jamshoro' );
+				$bic_text = get_theme_mod( 'bridgenova_footer_bic_text', 'Incubated at BIC MUET Jamshoro' );
 				?>
 				<div class="footer-bic-badge">
 					<img src="<?php echo esc_url( $bic_logo ); ?>" alt="BIC MUET Jamshoro Logo" class="bic-muet-logo" loading="lazy">

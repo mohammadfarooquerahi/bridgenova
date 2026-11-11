@@ -288,7 +288,7 @@ function bridgenova_customize_register( $wp_customize ) {
 
 	// Incubation Badge Text
 	$wp_customize->add_setting( 'bridgenova_footer_bic_text', array(
-		'default'           => 'Incubated at BIC Mehran University Jamshoro',
+		'default'           => 'Incubated at BIC MUET Jamshoro',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'bridgenova_footer_bic_text', array(

@@ -1010,12 +1010,13 @@ html, body {
   }
   .hp-footer-bottom-row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 6px;
     width: 100%;
     padding-top: 4px;
+    text-align: center;
   }
   .hp-footer-dev-credit,
   .footer-dev-credit {
