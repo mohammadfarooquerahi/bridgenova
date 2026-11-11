@@ -67,19 +67,19 @@ $about_p2       = get_theme_mod( 'about_p2', 'Our mission is to empower people w
 
       <div class="hp-hero-stats hp-reveal-stagger" id="hp-hero-stats">
         <div>
-          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_members_num ); ?>" data-suffix="+">0</div>
+          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_members_num ); ?>" data-suffix="+"><?php echo esc_html( $stat_members_num ); ?>+</div>
           <div class="hp-hero-stat-label"><?php echo esc_html( $stat_members_label ); ?></div>
         </div>
         <div>
-          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_countries_num ); ?>" data-suffix="+">0</div>
+          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_countries_num ); ?>" data-suffix="+"><?php echo esc_html( $stat_countries_num ); ?>+</div>
           <div class="hp-hero-stat-label"><?php echo esc_html( $stat_countries_label ); ?></div>
         </div>
         <div>
-          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_programs_num ); ?>" data-suffix="+">0</div>
+          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_programs_num ); ?>" data-suffix="+"><?php echo esc_html( $stat_programs_num ); ?>+</div>
           <div class="hp-hero-stat-label"><?php echo esc_html( $stat_programs_label ); ?></div>
         </div>
         <div>
-          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_partners_num ); ?>" data-suffix="+">0</div>
+          <div class="hp-hero-stat-num" data-count="<?php echo esc_attr( $stat_partners_num ); ?>" data-suffix="+"><?php echo esc_html( $stat_partners_num ); ?>+</div>
           <div class="hp-hero-stat-label"><?php echo esc_html( $stat_partners_label ); ?></div>
         </div>
       </div>

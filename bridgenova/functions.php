@@ -6,7 +6,7 @@
  */
 
 if ( ! defined( 'BRIDGENOVA_VERSION' ) ) {
-	define( 'BRIDGENOVA_VERSION', '1.0.6' );
+	define( 'BRIDGENOVA_VERSION', '1.0.7' );
 }
 
 /**
@@ -111,10 +111,21 @@ function bridgenova_scripts() {
 	wp_enqueue_style( 'bridgenova-style', get_stylesheet_uri(), array(), BRIDGENOVA_VERSION );
 	wp_enqueue_style( 'bridgenova-main', get_template_directory_uri() . '/assets/css/main.css', array(), BRIDGENOVA_VERSION );
 
-	// Theme Scripts
-	wp_enqueue_script( 'bridgenova-main-js', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), BRIDGENOVA_VERSION, true );
+	// Theme Scripts - load async/defer without jQuery dependency for sub-1s load
+	wp_enqueue_script( 'bridgenova-main-js', get_template_directory_uri() . '/assets/js/main.js', array(), BRIDGENOVA_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'bridgenova_scripts' );
+
+/**
+ * Add defer attribute to theme script for faster rendering
+ */
+function bridgenova_defer_scripts( $tag, $handle ) {
+	if ( 'bridgenova-main-js' === $handle ) {
+		return str_replace( ' src', ' defer src', $tag );
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'bridgenova_defer_scripts', 10, 2 );
 
 /**
  * Register Custom Post Types
@@ -319,7 +330,7 @@ add_action( 'wp_enqueue_scripts', 'bridgenova_localize_scripts' );
  */
 function bridgenova_auto_setup_pages() {
 	$setup_ver = get_option( 'bridgenova_setup_version' );
-	if ( $setup_ver === '1.0.6' && ! isset( $_GET['bridgenova_setup'] ) ) {
+	if ( $setup_ver === '1.0.7' && ! isset( $_GET['bridgenova_setup'] ) ) {
 		return;
 	}
 
@@ -592,7 +603,7 @@ function bridgenova_auto_setup_pages() {
 
 	update_option( 'permalink_structure', '/%postname%/' );
 	flush_rewrite_rules( true );
-	update_option( 'bridgenova_setup_version', '1.0.6' );
+	update_option( 'bridgenova_setup_version', '1.0.7' );
 }
 add_action( 'init', 'bridgenova_auto_setup_pages' );
 add_action( 'after_switch_theme', 'bridgenova_auto_setup_pages' );

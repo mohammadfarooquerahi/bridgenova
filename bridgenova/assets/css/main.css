@@ -517,20 +517,24 @@ html, body {
     outline-offset: 3px;
   }
 
-  /* ---------- progressive-enhancement reveal (never blank if JS fails) ---------- */
-  .hp-reveal { opacity: 1; transition: opacity 800ms ease, transform 800ms ease; }
-  html.hp-js-ready .hp-reveal:not(.hp-in-view) { opacity: 0; transform: translateY(28px); }
-  .hp-reveal.hp-in-view { opacity: 1; transform: translateY(0); }
-
-  .hp-reveal-stagger > * { opacity: 1; transition: opacity 650ms ease, transform 650ms ease; }
-  html.hp-js-ready .hp-reveal-stagger:not(.hp-in-view) > * { opacity: 0; transform: translateY(22px); }
-  .hp-reveal-stagger.hp-in-view > * { opacity: 1; transform: translateY(0); }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(1) { transition-delay: 0ms; }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(2) { transition-delay: 70ms; }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(3) { transition-delay: 140ms; }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(4) { transition-delay: 210ms; }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(5) { transition-delay: 280ms; }
-  .hp-reveal-stagger.hp-in-view > *:nth-child(6) { transition-delay: 350ms; }
+  /* ---------- instant high-performance render (1s loading target, never blank) ---------- */
+  .hp-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .hp-reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+  .hp-hero-content,
+  .hp-hero,
+  .hp-hero-stats,
+  .hp-hero-stats > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .hp-reveal, .hp-reveal-stagger > * { transition: none !important; opacity: 1 !important; transform: none !important; }
@@ -970,28 +974,99 @@ html, body {
   }
 
   .hp-footer-bottom {
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); color: #6f86a0; font-size: 13px;
-  }
-  .hp-footer-dev-credit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: #6f86a0;
+    font-size: 13px;
     text-align: center;
-    margin-top: 12px;
-    font-size: 11px;
-    line-height: 1.2;
   }
-  .hp-footer-dev-credit a {
+  .footer-bic-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin: 0 auto 16px auto;
+    text-align: center;
+  }
+  .footer-bic-badge .bic-muet-logo {
+    height: 60px !important;
+    max-height: 70px !important;
+    width: auto !important;
+    max-width: 230px !important;
+    object-fit: contain;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .footer-bic-badge span {
+    font-size: 15px !important;
+    font-weight: 700 !important;
     color: #ffffff !important;
+    letter-spacing: 0.6px;
+  }
+  .hp-footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    padding-top: 4px;
+  }
+  .hp-footer-dev-credit,
+  .footer-dev-credit {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 10px !important;
     opacity: 0.10 !important;
+    transition: opacity 0.3s ease !important;
+  }
+  .hp-footer-dev-credit a,
+  .footer-dev-credit a {
+    color: #ffffff !important;
+    opacity: 1 !important;
     text-decoration: none !important;
     transition: opacity 0.3s ease !important;
     display: inline-block;
     font-size: 11px;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    cursor: pointer !important;
   }
+  .hp-footer-dev-credit:hover,
+  .hp-footer-dev-credit:hover a,
   .hp-footer-dev-credit a:hover,
-  .hp-footer-dev-credit a:focus {
+  .hp-footer-dev-credit a:focus,
+  .footer-dev-credit:hover,
+  .footer-dev-credit:hover a,
+  .footer-dev-credit a:hover,
+  .footer-dev-credit a:focus {
     opacity: 0.20 !important;
+  }
+
+  @media (max-width: 768px) {
+    .footer-bic-badge {
+      flex-direction: column !important;
+      gap: 10px !important;
+      margin-bottom: 14px !important;
+    }
+    .footer-bic-badge .bic-muet-logo {
+      height: 52px !important;
+      max-height: 60px !important;
+    }
+    .footer-bic-badge span {
+      font-size: 13.5px !important;
+    }
+    .hp-footer-bottom-row {
+      flex-direction: column !important;
+      text-align: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+    }
   }
 
   /* ============================================================

@@ -40,27 +40,21 @@ get_header();
   }
 
   /* ============================================================
-     REVEAL ANIMATIONS
+     REVEAL ANIMATIONS (instant 1s render - never hidden)
      ============================================================ */
   .svc-reveal {
-    opacity: 1;
-    transition: opacity 700ms ease, transform 700ms ease;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 300ms ease, transform 300ms ease;
   }
-  html.svc-js-ready .svc-reveal:not(.svc-in-view) {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  .svc-reveal.svc-in-view { opacity: 1; transform: translateY(0); }
+  .svc-reveal.svc-in-view { opacity: 1 !important; transform: none !important; }
 
   .svc-reveal-stagger > * {
-    opacity: 1;
-    transition: opacity 600ms ease, transform 600ms ease;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 300ms ease, transform 300ms ease;
   }
-  html.svc-js-ready .svc-reveal-stagger:not(.svc-in-view) > * {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .svc-reveal-stagger.svc-in-view > * { opacity: 1; transform: translateY(0); }
+  .svc-reveal-stagger.svc-in-view > * { opacity: 1 !important; transform: none !important; }
   .svc-reveal-stagger.svc-in-view > *:nth-child(1) { transition-delay: 0ms; }
   .svc-reveal-stagger.svc-in-view > *:nth-child(2) { transition-delay: 60ms; }
   .svc-reveal-stagger.svc-in-view > *:nth-child(3) { transition-delay: 120ms; }

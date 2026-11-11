@@ -87,14 +87,34 @@ $footer_desc      = get_theme_mod( 'bridgenova_footer_description', 'Building Re
 
 			<!-- Footer Bottom -->
 			<div class="hp-footer-bottom">
-				<p class="hp-footer-copy">&copy; <span class="footer-year"><?php echo esc_html( date( 'Y' ) ); ?></span> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
-				<div class="hp-footer-bottom-links">
-					<a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>
-					<span class="hp-footer-sep">|</span>
-					<a href="<?php echo esc_url( home_url( '/term-and-conditions/' ) ); ?>">Terms &amp; Conditions</a>
+				<!-- BIC MUET Incubation Badge -->
+				<?php 
+				$bic_logo = get_theme_mod( 'bridgenova_footer_bic_logo', get_template_directory_uri() . '/assets/images/BIC-MUET-logo.png' );
+				$bic_text = get_theme_mod( 'bridgenova_footer_bic_text', 'Incubated at BIC Mehran University Jamshoro' );
+				?>
+				<div class="footer-bic-badge">
+					<img src="<?php echo esc_url( $bic_logo ); ?>" alt="BIC MUET Jamshoro Logo" class="bic-muet-logo" loading="lazy">
+					<span><?php echo esc_html( $bic_text ); ?></span>
 				</div>
-				<div class="hp-footer-dev-credit" style="width:100%; text-align:center; margin-top:12px; font-size:11px; line-height:1.2;">
-					<a href="https://www.linkedin.com/in/mohammadfarooque/" target="_blank" rel="noopener noreferrer" style="color:#ffffff; opacity:0.10; text-decoration:none; transition:opacity 0.3s ease; display:inline-block; font-size:11px;" onmouseover="this.style.opacity='0.20'" onmouseout="this.style.opacity='0.10'">Developed by Mohammad Farooque</a>
+
+				<div class="hp-footer-bottom-row">
+					<p class="hp-footer-copy">&copy; <span class="footer-year"><?php echo esc_html( date( 'Y' ) ); ?></span> <?php bloginfo( 'name' ); ?>. All rights reserved.</p>
+					<div class="hp-footer-bottom-links">
+						<a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>
+						<span class="hp-footer-sep">|</span>
+						<a href="<?php echo esc_url( home_url( '/term-and-conditions/' ) ); ?>">Terms &amp; Conditions</a>
+					</div>
+				</div>
+
+				<!-- Developer Credit with Hidden Semantic Metadata (Strictly 10% visible default, 20% on hover) -->
+				<div class="footer-dev-credit hp-footer-dev-credit" style="display: block !important; width: 100% !important; text-align: center !important; margin-top: 10px !important; opacity: 0.10 !important; transition: opacity 0.3s ease !important;" onmouseenter="this.style.setProperty('opacity','0.20','important')" onmouseleave="this.style.setProperty('opacity','0.10','important')" itemscope itemtype="https://schema.org/Person">
+					<meta itemprop="name" content="Mohammad Farooque">
+					<meta itemprop="jobTitle" content="Website Developer">
+					<meta itemprop="description" content="Computer Science Graduate, Website Developer">
+					<meta itemprop="alumniOf" content="Computer Science Graduate">
+					<meta itemprop="knowsAbout" content="Computer Science Graduate, Website Developer, WordPress, Full Stack Web Development">
+					<span class="screen-reader-text" style="display: none !important;">Computer Science Graduate, Website Developer</span>
+					<a href="https://www.linkedin.com/in/mohammadfarooque/" target="_blank" rel="noopener noreferrer" itemprop="url" title="Mohammad Farooque — Computer Science Graduate, Website Developer" aria-label="Developed by Mohammad Farooque - Computer Science Graduate, Website Developer" style="color: #ffffff !important; opacity: 1 !important; font-size: 11px !important; text-decoration: none !important; cursor: pointer !important; display: inline-block !important; letter-spacing: 0.5px !important;">Developed by Mohammad Farooque.</a>
 				</div>
 			</div>
 		</div>

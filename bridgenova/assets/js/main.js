@@ -3,8 +3,12 @@
  * Fully responsive navigation, animations, counters, and interactive widgets.
  */
 
-document.addEventListener('DOMContentLoaded', function () {
+function initBridgeNova() {
     document.documentElement.classList.add('hp-js-ready');
+    // Ensure all content is immediately marked visible for sub-1s load
+    document.querySelectorAll('.hp-reveal, .hp-reveal-stagger, .svc-reveal, .svc-reveal-stagger').forEach(function (el) {
+        el.classList.add('hp-in-view', 'svc-in-view');
+    });
 
     // 1. Mobile Menu & Navigation System
     const header = document.getElementById('bridgeHeader');
@@ -277,4 +281,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBridgeNova);
+} else {
+    initBridgeNova();
+}

@@ -285,6 +285,28 @@ function bridgenova_customize_register( $wp_customize ) {
 		'section' => 'bridgenova_footer_section',
 		'type'    => 'text',
 	) );
+
+	// Incubation Badge Text
+	$wp_customize->add_setting( 'bridgenova_footer_bic_text', array(
+		'default'           => 'Incubated at BIC Mehran University Jamshoro',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'bridgenova_footer_bic_text', array(
+		'label'   => esc_html__( 'Incubation Badge Text', 'bridgenova' ),
+		'section' => 'bridgenova_footer_section',
+		'type'    => 'text',
+	) );
+
+	// Incubation Badge Logo (Customizer Image Control)
+	$wp_customize->add_setting( 'bridgenova_footer_bic_logo', array(
+		'default'           => get_template_directory_uri() . '/assets/images/BIC-MUET-logo.png',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'bridgenova_footer_bic_logo', array(
+		'label'       => esc_html__( 'Incubation Badge Logo', 'bridgenova' ),
+		'description' => esc_html__( 'Upload custom incubation partner logo (default: BIC MUET Jamshoro)', 'bridgenova' ),
+		'section'     => 'bridgenova_footer_section',
+	) ) );
 }
 add_action( 'customize_register', 'bridgenova_customize_register' );
 endif;
